@@ -318,6 +318,37 @@ target_link_libraries(delta-core PUBLIC
     OpenGL32
 )
 
+add_library(delta-min STATIC
+
+    src/yds_timing.cpp
+    src/yds_timing.cpp
+    src/yds_windows_audio_wave_file.cpp
+    src/yds_audio_file.cpp
+    src/yds_window_system_object.cpp
+    src/yds_audio_parameters.cpp
+    src/yds_base.cpp
+    src/yds_error_system.cpp
+    src/yds_error_handler.cpp
+
+    include/yds_timing.h
+    include/yds_windows_audio_wave_file.h
+    include/yds_audio_file.h
+    include/yds_window_system_object.h
+    include/yds_audio_parameters.h
+    include/yds_base.h
+    include/yds_dynamic_array.h
+    include/yds_error_codes.h
+    include/yds_error_system.h
+    include/yds_allocator.h
+    include/yds_error_handler.h
+)
+
+target_link_libraries(delta-min PUBLIC
+    winmm
+)
+
+target_compile_definitions(delta-min PUBLIC _UNICODE UNICODE)
+
 add_subdirectory(physics)
 add_subdirectory(engines)
 add_subdirectory(demos)
@@ -325,4 +356,5 @@ add_subdirectory(demos)
 set_property(TARGET delta-basic PROPERTY FOLDER "delta")
 set_property(TARGET delta-basic-demo PROPERTY FOLDER "delta")
 set_property(TARGET delta-core PROPERTY FOLDER "delta")
+set_property(TARGET delta-min PROPERTY FOLDER "delta")
 set_property(TARGET delta-physics PROPERTY FOLDER "delta")
